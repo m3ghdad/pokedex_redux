@@ -948,7 +948,14 @@ var _reactDom = __webpack_require__(18);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _api_util = __webpack_require__(27);
+
+var _pokemon_actions = __webpack_require__(28);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+window.receiveAllPokemon = _pokemon_actions.receiveAllPokemon;
+window.fetchAllPokemon = _api_util.fetchAllPokemon;
 
 document.addEventListener('DOMContentLoaded', function () {
   var rootEl = document.getElementById('root');
@@ -18257,6 +18264,45 @@ function camelize(string) {
 }
 
 module.exports = camelize;
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+// define functions that make ajax requests fetching
+//information from our rails api.
+
+var fetchAllPokemon = exports.fetchAllPokemon = function fetchAllPokemon() {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/pokemon'
+  });
+};
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var RECEIVE_ALL_POKEMON = exports.RECEIVE_ALL_POKEMON = 'RECEIVE_ALL_POKEMON';
+
+var receiveAllPokemon = exports.receiveAllPokemon = function receiveAllPokemon(pokemon) {
+  return {
+    type: RECEIVE_ALL_POKEMON,
+    pokemon: pokemon
+  };
+};
 
 /***/ })
 /******/ ]);
