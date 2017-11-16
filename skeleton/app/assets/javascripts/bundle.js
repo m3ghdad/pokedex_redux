@@ -1284,7 +1284,7 @@ var fetchAllPokemon = exports.fetchAllPokemon = function fetchAllPokemon() {
   });
 };
 
-var fetchSinglePokemon = exports.fetchSinglePokemon = function fetchSinglePokemon() {
+var fetchSinglePokemon = exports.fetchSinglePokemon = function fetchSinglePokemon(id) {
   return $.ajax({
     method: 'GET',
     url: 'api/pokemon/' + id
@@ -29102,7 +29102,7 @@ var _pokemon_detail2 = _interopRequireDefault(_pokemon_detail);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
-  var pokemon = state.entities.pokemon[state.ui.pokeDisplay];
+  var pokemon = state.entities.pokemon[state.pokeDisplay];
   return {
     pokemon: pokemon
   };
@@ -29110,13 +29110,38 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    requestSinglePokemon: function requestSinglePokemon() {
+    requestSinglePokemon: function requestSinglePokemon(id) {
       return dispatch((0, _pokemon_actions.requestSinglePokemon)(id));
     }
   };
 };
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_pokemon_detail2.default);
+
+// import { connect } from 'react-redux';
+//
+// import PokemonDetail from './pokemon_detail';
+// import { requestSinglePokemon } from '../../actions/pokemon_actions';
+// import { selectPokeItems } from '../../reducers/selectors';
+//
+// const mapStateToProps = state => {
+//   const pokemon = state.entities.pokemon[state.ui.pokeDisplay];
+//
+//   return{
+//     pokemon,
+//     items: selectPokeItems(state, pokemon),
+//     loading: state.ui.loading.detailLoading
+//   };
+// };
+//
+// const mapDispatchToProps = dispatch => ({
+//   requestSinglePokemon: id => dispatch(requestSinglePokemon(id))
+// });
+//
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(PokemonDetail);
 
 /***/ }),
 /* 228 */
@@ -29159,7 +29184,7 @@ var PokemonDetail = function (_React$Component) {
     }
   }, {
     key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps() {
+    value: function componentWillReceiveProps(nextProps) {
       if (this.props.match.params.pokemonId !== nextProps.match.params.pokemonId) {
         this.props.requestSinglePokemon(nextProps.match.params.pokemonId);
       }
