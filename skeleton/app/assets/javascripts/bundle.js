@@ -21476,15 +21476,24 @@ var PokemonIndex = function (_React$Component) {
     value: function render() {
       var pokemon = this.props.pokemon;
 
+
       return _react2.default.createElement(
         "section",
         { className: "pokedex" },
         _react2.default.createElement(
           "ul",
           null,
-          pokemon.map(function (poke) {
-            return _react2.default.createElement(PokemonIndexItem, { key: poke.id, pokemon: poke });
-          })
+          _react2.default.createElement(
+            "span",
+            null,
+            pokemon.id
+          ),
+          _react2.default.createElement("img", { src: pokemon.image_url, alt: pokemon.name }),
+          _react2.default.createElement(
+            "span",
+            null,
+            pokemon.name
+          )
         )
       );
     }
@@ -21494,6 +21503,29 @@ var PokemonIndex = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = PokemonIndex;
+
+// class TodoList extends React.Component {
+//
+//   render() {
+//     const { todos, receiveTodo } = this.props;
+//     const todoItems = todos.map(todo => (
+//         <TodoListItem
+//           key={`todo-list-item${todo.id}`}
+//           todo={todo}
+//           receiveTodo={ receiveTodo } />
+//       )
+//     );
+//
+//     return(
+//       <div>
+//         <ul className="todo-list">
+//           { todoItems }
+//         </ul>
+//         <TodoForm receiveTodo={ receiveTodo }/>
+//       </div>
+//     );
+//   }
+// }
 
 /***/ }),
 /* 80 */

@@ -6,10 +6,13 @@ class PokemonIndex extends React.Component {
   }
   render() {
     const { pokemon } = this.props;
+
     return (
       <section className="pokedex">
         <ul>
-          {pokemon.map(poke => <PokemonIndexItem key={poke.id} pokemon={poke} />)}
+          <span>{pokemon.id}</span>
+          <img src={pokemon.image_url} alt={pokemon.name} />
+          <span>{pokemon.name}</span>
         </ul>
       </section>
     );
@@ -17,3 +20,27 @@ class PokemonIndex extends React.Component {
 }
 
 export default PokemonIndex;
+
+
+// class TodoList extends React.Component {
+//
+//   render() {
+//     const { todos, receiveTodo } = this.props;
+//     const todoItems = todos.map(todo => (
+//         <TodoListItem
+//           key={`todo-list-item${todo.id}`}
+//           todo={todo}
+//           receiveTodo={ receiveTodo } />
+//       )
+//     );
+//
+//     return(
+//       <div>
+//         <ul className="todo-list">
+//           { todoItems }
+//         </ul>
+//         <TodoForm receiveTodo={ receiveTodo }/>
+//       </div>
+//     );
+//   }
+// }
