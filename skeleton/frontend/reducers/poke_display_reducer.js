@@ -1,35 +1,15 @@
-import {
-  RECEIVE_SINGLE_POKEMON
-} from '../actions/pokemon_actions';
+import { RECEIVE_SINGLE_POKEMON } from '../actions/pokemon_actions';
 
-const pokemonDisplayReducer = (state = null, action) => {
+const pokeDisplayReducer = (state = null, action) => {
   Object.freeze(state);
 
-  switch (action.type) {
+  switch(action.type) {
     case RECEIVE_SINGLE_POKEMON:
       return action.payload.pokemon.id;
+
     default:
       return state;
   }
 };
 
-export default pokeDisplay;
-
-
-
-
-// import { RECEIVE_SINGLE_POKEMON } from '../actions/pokemon_actions';
-//
-// const pokeDisplayReducer = (state = null, action) => {
-//   Object.freeze(state);
-//
-//   switch(action.type) {
-//     case RECEIVE_SINGLE_POKEMON:
-//       return action.payload.pokemon.id;
-//
-//     default:
-//       return state;
-//   }
-// };
-//
-// export default pokeDisplayReducer;
+export default pokeDisplayReducer;
