@@ -26827,23 +26827,29 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(129);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var PokemonIndexItem = function PokemonIndexItem(_ref) {
   var pokemon = _ref.pokemon;
   return _react2.default.createElement(
-    "li",
-    { className: "pokemon-index-item" },
+    'li',
+    { className: 'pokemon-index-item' },
     _react2.default.createElement(
-      "span",
-      null,
-      pokemon.id
-    ),
-    _react2.default.createElement("img", { src: pokemon.image_url }),
-    _react2.default.createElement(
-      "span",
-      null,
-      pokemon.name
+      _reactRouterDom.Link,
+      { to: '/pokemon/' + pokemon.id },
+      _react2.default.createElement(
+        'span',
+        null,
+        pokemon.id
+      ),
+      _react2.default.createElement('img', { src: pokemon.image_url }),
+      _react2.default.createElement(
+        'span',
+        null,
+        pokemon.name
+      )
     )
   );
 };
