@@ -21467,34 +21467,27 @@ var PokemonIndex = function (_React$Component) {
   }
 
   _createClass(PokemonIndex, [{
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {
       this.props.requestAllPokemon();
+      this.render();
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
       var pokemon = this.props.pokemon;
 
-
       return _react2.default.createElement(
-        "section",
-        { className: "pokedex" },
-        _react2.default.createElement(
-          "ul",
-          null,
-          _react2.default.createElement(
-            "span",
-            null,
-            pokemon.id
-          ),
-          _react2.default.createElement("img", { src: pokemon.image_url, alt: pokemon.name }),
-          _react2.default.createElement(
-            "span",
-            null,
-            pokemon.name
-          )
-        )
+        'ul',
+        null,
+        pokemon.map(function (poke) {
+          return _react2.default.createElement(
+            'li',
+            { key: poke.id },
+            poke.name,
+            _react2.default.createElement('img', { src: poke.image_url })
+          );
+        })
       );
     }
   }]);
