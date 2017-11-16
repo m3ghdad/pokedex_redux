@@ -18302,12 +18302,28 @@ var fetchAllPokemon = exports.fetchAllPokemon = function fetchAllPokemon() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.requestAllPokemon = exports.receiveAllPokemon = exports.RECEIVE_ALL_POKEMON = undefined;
+
+var _api_util = __webpack_require__(27);
+
+var APIUtil = _interopRequireWildcard(_api_util);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 var RECEIVE_ALL_POKEMON = exports.RECEIVE_ALL_POKEMON = 'RECEIVE_ALL_POKEMON';
 
 var receiveAllPokemon = exports.receiveAllPokemon = function receiveAllPokemon(pokemon) {
   return {
     type: RECEIVE_ALL_POKEMON,
     pokemon: pokemon
+  };
+};
+
+var requestAllPokemon = exports.requestAllPokemon = function requestAllPokemon() {
+  return function (dispatch) {
+    return APIUtil.fetchAllPokemon().then(function (pokemon) {
+      return dispatch(receiveAllPokemon(pokemon));
+    });
   };
 };
 
@@ -18771,10 +18787,14 @@ var _reduxLogger = __webpack_require__(52);
 
 var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
+var _thunk = __webpack_require__(56);
+
+var _thunk2 = _interopRequireDefault(_thunk);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var configureStore = function configureStore() {
-  return (0, _redux.createStore)(_root_reducer2.default, (0, _redux.applyMiddleware)(_reduxLogger2.default));
+  return (0, _redux.createStore)(_root_reducer2.default, (0, _redux.applyMiddleware)(_reduxLogger2.default, _thunk2.default));
 };
 
 exports.default = configureStore;
@@ -19473,6 +19493,31 @@ var pokemonReducer = function pokemonReducer() {
 };
 
 exports.default = pokemonReducer;
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var thunk = function thunk(_ref) {
+  var dispatch = _ref.dispatch,
+      getState = _ref.getState;
+  return function (next) {
+    return function (action) {
+      if (typeof action === 'function') {
+        return action(dispatch);
+      }
+      return next(action);
+    };
+  };
+};
+
+exports.default = thunk;
 
 /***/ })
 /******/ ]);
