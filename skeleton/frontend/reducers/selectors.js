@@ -1,3 +1,3 @@
-import values form 'lodash/values';
+import values from 'lodash/values';
 
 export const selectAllPokemon = (state) => values(state.entities.pokemon);

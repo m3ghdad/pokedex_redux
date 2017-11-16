@@ -5,6 +5,7 @@ import {receiveAllPokemon} from './actions/pokemon_actions';
 import configureStore from './store/store';
 import Root from './components/root'
 
+
 // window.receiveAllPokemon = receiveAllPokemon;
 // window.fetchAllPokemon = fetchAllPokemon;
 // window.getState = store.getState;
