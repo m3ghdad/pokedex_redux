@@ -22478,6 +22478,10 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _pokemon_index_item = __webpack_require__(155);
+
+var _pokemon_index_item2 = _interopRequireDefault(_pokemon_index_item);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22506,17 +22510,13 @@ var PokemonIndex = function (_React$Component) {
     value: function render() {
       var pokemon = this.props.pokemon;
 
+      var pokemonItems = pokemon.map(function (poke) {
+        return _react2.default.createElement(_pokemon_index_item2.default, { key: poke.id, pokemon: poke });
+      });
       return _react2.default.createElement(
         'ul',
         null,
-        pokemon.map(function (poke) {
-          return _react2.default.createElement(
-            'li',
-            { key: poke.id },
-            poke.name,
-            _react2.default.createElement('img', { src: poke.image_url })
-          );
-        })
+        pokemonItems
       );
     }
   }]);
@@ -22525,29 +22525,6 @@ var PokemonIndex = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = PokemonIndex;
-
-// class TodoList extends React.Component {
-//
-//   render() {
-//     const { todos, receiveTodo } = this.props;
-//     const todoItems = todos.map(todo => (
-//         <TodoListItem
-//           key={`todo-list-item${todo.id}`}
-//           todo={todo}
-//           receiveTodo={ receiveTodo } />
-//       )
-//     );
-//
-//     return(
-//       <div>
-//         <ul className="todo-list">
-//           { todoItems }
-//         </ul>
-//         <TodoForm receiveTodo={ receiveTodo }/>
-//       </div>
-//     );
-//   }
-// }
 
 /***/ }),
 /* 112 */
@@ -26834,6 +26811,44 @@ var withRouter = function withRouter(Component) {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (withRouter);
+
+/***/ }),
+/* 155 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PokemonIndexItem = function PokemonIndexItem(_ref) {
+  var pokemon = _ref.pokemon;
+  return _react2.default.createElement(
+    "li",
+    { className: "pokemon-index-item" },
+    _react2.default.createElement(
+      "span",
+      null,
+      pokemon.id
+    ),
+    _react2.default.createElement("img", { src: pokemon.image_url }),
+    _react2.default.createElement(
+      "span",
+      null,
+      pokemon.name
+    )
+  );
+};
+
+exports.default = PokemonIndexItem;
 
 /***/ })
 /******/ ]);
