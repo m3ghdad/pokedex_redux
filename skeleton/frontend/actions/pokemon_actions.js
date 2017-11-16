@@ -11,7 +11,7 @@ export const receiveAllPokemon = pokemon => ({
 export const receiveSinglePokemon = payload => ({
   type: RECEIVE_SINGLE_POKEMON,
   payload
-})
+});
 
 export const requestSinglePokemon = (id) => (dispatch) => (
   APIUtil.fetchSinglePokemon(id)
